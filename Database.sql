@@ -1,0 +1,19 @@
+CREATE DATABASE PharmacyDB;
+GO
+
+USE PharmacyDB;
+GO
+
+CREATE TABLE Medicines (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Quantity INT NOT NULL
+);
+
+CREATE TABLE Sales (
+    SaleID INT IDENTITY(1,1) PRIMARY KEY,
+    MedicineID INT FOREIGN KEY REFERENCES Medicines(ID),
+    QuantitySold INT NOT NULL,
+    SaleDate DATETIME DEFAULT GETDATE()
+);
